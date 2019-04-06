@@ -52,14 +52,14 @@ void getInfo(){
         std::istringstream iss(line);
         iss >> start_vertex;
         std::cout << std::endl;
+        std::vector<int> vec;
         while(iss >> end_vertex >> comma >> weight) {
-            // std::vector<int> vec;
-            // vec.push_back(end_vertex);
-            // vec.push_back(weight);
-            // data.insert(std::make_pair(start_vertex, vec));
-            data.insert(std::pair<int, std::vector<int> 
-                      >(start_vertex, {end_vertex, weight}));
+            vec.push_back(end_vertex);
+            vec.push_back(weight);
+            // data.insert(std::pair<int, std::vector<int> 
+            //           >(start_vertex, {end_vertex, weight}));
         }
+        data.insert(std::make_pair(start_vertex, vec));
     }
     inFile.close();
 }
