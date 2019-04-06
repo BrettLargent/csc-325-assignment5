@@ -22,3 +22,6 @@ with open(fname) as inFile:
             edges = edge.split(',')
             edgeTuple = (int(edges[0]), int(edges[1]))
             valueList.append(edgeTuple)
+        d[key] = valueList
+
+    print(d)
