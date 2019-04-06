@@ -14,19 +14,19 @@
 #include<map>
 
 // global variables
-std::vector<int> input_vector;
-std::map<int, std::map<int, int>> input;
+std::map<int, std::vector<int>> data;
 int input_start_vertex;
 
 // function declarations
 void getInfo();
-
+void checkData();
 
 /*********************************************************************************
-***MAIN FUNCTION for friend circle program****************************************
+***MAIN FUNCTION for Dijkstra's shortest path*************************************
 *********************************************************************************/
 int main(){
     getInfo();
+    checkData();
     return 0;
 }
 
@@ -48,16 +48,29 @@ void getInfo(){
     }
     while (std::getline(inFile, line)) {
         int start_vertex, end_vertex, weight;
-        char comma;
+        char comma, ws;
         std::istringstream iss(line);
         iss >> start_vertex;
+        std::cout << std::endl;
         while(iss >> end_vertex >> comma >> weight) {
-            input_vector.push_back(end_vertex);
-            input_vector.push_back(weight);
-            // std::map<pair<start_vertex, std::map<pair<end_vertex, weight>>> input;
+            // std::vector<int> vec;
+            // vec.push_back(end_vertex);
+            // vec.push_back(weight);
+            // data.insert(std::make_pair(start_vertex, vec));
+            data.insert(std::pair<int, std::vector<int> 
+                      >(start_vertex, {end_vertex, weight}));
         }
     }
-    for (int i = 0; i < input_vector.size(); i++) 
-        std::cout << input_vector.at(i) << " ";
     inFile.close();
+}
+
+void checkData(){
+    for(auto ii=data.begin(); ii!=data.end(); ++ii){
+        std::cout << (*ii).first << ": ";
+        std::vector <int> inVect = (*ii).second;
+        for (unsigned j=0; j < inVect.size(); j++){
+            std::cout << inVect.at(j) << " ";
+        }
+        std::cout << std::endl;
+    }
 }
