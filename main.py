@@ -64,4 +64,4 @@ while len(visited) != len(d):   # While not all nodes visited
 
 for i in pathLengths:                           # Print all path lengths as a comma separated list
     str(i)
-print(', '.join(str(s) for s in pathLengths))
+print(','.join(str(s) for s in pathLengths))
